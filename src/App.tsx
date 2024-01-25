@@ -1,26 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { FC } from "react";
+import { Routes, Route } from "react-router-dom";
+import { Navigation } from "./components/Layout/Naviagtion";
+import { Home } from "./pages/Home/Home";
+import { Recipes } from "./pages/Recipes/Recipes";
 
-function App() {
+export const App: FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navigation />
+      <main className="container">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/recipes" element={<Recipes />} />
+          <Route path="/recipes/:id" element={<article>Recipes 1</article>} />
+          <Route path="/about" element={<article>About</article>} />
+        </Routes>
+      </main>
+    </>
   );
-}
-
-export default App;
+};
